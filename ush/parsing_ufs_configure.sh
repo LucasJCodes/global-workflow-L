@@ -26,6 +26,8 @@ else
   local cmeps_run_type='startup'
 fi
 
+local cmeps_run_type='startup'
+
 # Atm-related
 local atm_model="fv3"
 local atm_petlist_bounds="0 $(( ATMPETS-1 ))"

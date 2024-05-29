@@ -713,11 +713,11 @@ CMEPS_postdet() {
 
     # Copy CMEPS restarts
     if [[ -f "${cmeps_restart_file}" ]]; then
-      ${NCP} "${cmeps_restart_file}" "${DATA}/ufs.cpld.cpl.r.nc" \
-      || ( echo "FATAL ERROR: Unable to copy CMEPS restarts, ABORT!"; exit 1 )
+      #${NCP} "${cmeps_restart_file}" "${DATA}/ufs.cpld.cpl.r.nc" \
+      #|| ( echo "FATAL ERROR: Unable to copy CMEPS restarts, ABORT!"; exit 1 )
       rm -f "${DATA}/rpointer.cpl"
-      touch "${DATA}/rpointer.cpl"
-      echo "ufs.cpld.cpl.r.nc" >> "${DATA}/rpointer.cpl"
+      #touch "${DATA}/rpointer.cpl"
+      #echo "ufs.cpld.cpl.r.nc" >> "${DATA}/rpointer.cpl"
     else
       # We have a choice to make here.
       # Either we can FATAL ERROR out, or we can let the coupling fields initialize from zero
