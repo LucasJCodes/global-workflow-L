@@ -96,10 +96,10 @@ case "${fv3_res}" in
         ;;
     "C96")
         export DELTIM=600
-        export layout_x=2
-        export layout_y=2
-        export layout_x_gfs=2
-        export layout_y_gfs=2
+        export layout_x=6
+        export layout_y=4
+        export layout_x_gfs=6
+        export layout_y_gfs=4
         export nthreads_fv3=1
         export nthreads_fv3_gfs=1
         export nthreads_ufs=1
@@ -457,7 +457,7 @@ if [[ "${skip_ww3}" == "false" ]]; then
       ntasks_ww3=262
       ;;
     "glo_100")
-      ntasks_ww3=30
+      ntasks_ww3=20
       nthreads_ww3=1
       ;;
     "glo_200")
