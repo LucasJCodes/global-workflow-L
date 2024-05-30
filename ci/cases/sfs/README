@@ -1,0 +1,7 @@
+#To run this test: 
+
+#Create a directory at the same level as your global-workflow clone, and go to this directory, then run the following two commands to set up your test: 
+
+source ../global-workflow/workflow/gw_setup.sh
+pslot=timing ./../global-workflow/workflow/create_experiment.py --yaml ../global-workflow/ci/cases/sfs/SFS_TEST.yaml
+
