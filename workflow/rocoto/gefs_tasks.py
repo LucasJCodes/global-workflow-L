@@ -327,7 +327,7 @@ class GEFSTasks(Tasks):
         deps = []
         for wave_grid in self._configs['wavepostsbs']['waveGRD'].split():
             wave_hist_path = self._template_to_rocoto_cycstring(self._base["COM_WAVE_HISTORY_TMPL"], {'MEMDIR': 'mem#member#'})
-            data = f'{wave_hist_path}/gefswave.out_grd.{wave_grid}.@Y@m@d.@H0000'
+            data = f'{wave_hist_path}/gefswave.out_grd.{wave_grid}.@Y@m@d.030000'
             dep_dict = {'type': 'data', 'data': data}
             deps.append(rocoto.add_dependency(dep_dict))
         dependencies = rocoto.create_dependency(dep_condition='and', dep=deps)

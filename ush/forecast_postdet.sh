@@ -436,7 +436,9 @@ MOM6_postdet() {
     # Looping over MOM6 output hours
     local fhr fhr3 last_fhr interval midpoint vdate vdate_mid source_file dest_file
     for fhr in ${MOM6_OUTPUT_FH}; do
+      fhrtemp=$(($fhr-3))
       fhr3=$(printf %03i "${fhr}")
+      fhr3temp=$(printf %03i "${fhrtemp}")
 
       if [[ -z ${last_fhr:-} ]]; then
         last_fhr=${fhr}
@@ -451,13 +453,16 @@ MOM6_postdet() {
 
       # Native model output uses window midpoint in the filename, but we are mapping that to the end of the period for COM
       source_file="ocn_${vdate_mid:0:4}_${vdate_mid:4:2}_${vdate_mid:6:2}_${vdate_mid:8:2}.nc"
-      dest_file="${RUN}.ocean.t${cyc}z.${interval}hr_avg.f${fhr3}.nc"
+      dest_file="${RUN}.ocean.t${cyc}z.${interval}hr_avg.f${fhr3temp}.nc"
       ${NLN} "${COM_OCEAN_HISTORY}/${dest_file}" "${DATA}/MOM6_OUTPUT/${source_file}"
 
+      fhrtemp=$(($fhr+3))
+      fhr3temp=$(printf %03i "${fhrtemp}")
+
       # Daily output
-      if (( fhr > 0 & fhr % 24 == 0 )); then
+      if (( fhrtemp > 0 & fhrtemp % 24 == 0 )); then
         source_file="ocn_daily_${vdate:0:4}_${vdate:4:2}_${vdate:6:2}.nc"
-        dest_file="${RUN}.ocean.t${cyc}z.daily.f${fhr3}.nc"
+        dest_file="${RUN}.ocean.t${cyc}z.daily.f${fhr3temp}.nc"
         ${NLN} "${COM_OCEAN_HISTORY}/${dest_file}" "${DATA}/MOM6_OUTPUT/${source_file}"
       fi
 
