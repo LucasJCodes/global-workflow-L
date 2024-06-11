@@ -593,7 +593,8 @@ MOM6_predet(){
 
   # MOM6 does not have a concept of high frequency output like FV3
   # Convert output settings into an explicit list for MOM6
-  MOM6_OUTPUT_FH=$(seq -s ' ' "3" "${FHOUT_OCNICE}" "${FHMAX}")
+  #MOM6_OUTPUT_FH=$(seq -s ' ' "3" "${FHOUT_OCNICE}" "${FHMAX}")
+  MOM6_OUTPUT_FH=$(seq -s ' ' "${FHMIN}" "${FHOUT_OCNICE}" "${FHMAX}")
 
   # If using stochastic parameterizations, create a seed that does not exceed the
   # largest signed integer

@@ -93,13 +93,13 @@ else
 fi
 export FHOUT_WAV=3
 export FHMAX_HF_WAV=120
-export FHOUT_HF_WAV=1
+export FHOUT_HF_WAV=3
 export FHMAX_WAV_IBP=180
 if (( FHMAX_WAV < FHMAX_WAV_IBP )); then export FHMAX_WAV_IBP=${FHMAX_GFS} ; fi
 
 # gridded and point output rate
 export DTFLD_WAV=$(( FHOUT_HF_WAV * 3600 ))
-export DTPNT_WAV=3600
+export DTPNT_WAV=10800
 export FHINCP_WAV=$(( DTPNT_WAV / 3600 ))
 
 # Selected output parameters (gridded)

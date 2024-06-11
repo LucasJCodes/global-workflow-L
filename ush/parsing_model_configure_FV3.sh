@@ -34,7 +34,7 @@ local QUILTING_RESTART=".true."
 local WRITE_GROUP=${WRITE_GROUP:-1}
 local WRTTASK_PER_GROUP=${WRTTASK_PER_GROUP:-24}
 local ITASKS=1
-local OUTPUT_HISTORY=${OUTPUT_HISTORY:-".true."}
+local OUTPUT_HISTORY=${OUTPUT_HISTORY:-".false."}
 local HISTORY_FILE_ON_NATIVE_GRID=".false."
 local WRITE_DOPOST=${WRITE_DOPOST:-".false."}
 local WRITE_NSFLIP=${WRITE_NSFLIP:-".false."}
@@ -53,6 +53,7 @@ local KCHUNK3D=1
 local IMO=${LONB_IMO}
 local JMO=${LATB_JMO}
 local OUTPUT_FH=${FV3_OUTPUT_FH}
+local OUTPUT_FH="${FHOUT_GFS} -1" 
 local IAU_OFFSET=${IAU_OFFSET:-0}
 
 # Ensure the template exists

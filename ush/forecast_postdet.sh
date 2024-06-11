@@ -324,47 +324,47 @@ WW3_postdet() {
   fi  # [[ "${warm_start}" == ".true." ]]
 
   # Link output files
-  local wavprfx="${RUN}wave${WAV_MEMBER:-}"
-  if [[ "${waveMULTIGRID}" == ".true." ]]; then
-    ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.log.mww3.${PDY}${cyc}" "log.mww3"
-    for ww3_grid in ${waveGRD}; do
-      ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.log.${ww3_grid}.${PDY}${cyc}" "log.${ww3_grid}"
-    done
-  else
-    ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.log.${waveGRD}.${PDY}${cyc}" "log.ww3"
-  fi
+  #local wavprfx="${RUN}wave${WAV_MEMBER:-}"
+  #if [[ "${waveMULTIGRID}" == ".true." ]]; then
+  #  ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.log.mww3.${PDY}${cyc}" "log.mww3"
+  #  for ww3_grid in ${waveGRD}; do
+  #    ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.log.${ww3_grid}.${PDY}${cyc}" "log.${ww3_grid}"
+  #  done
+  #else
+  #  ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.log.${waveGRD}.${PDY}${cyc}" "log.ww3"
+  #fi
 
   # Loop for gridded output (uses FHINC)
-  local fhr vdate FHINC ww3_grid
-  fhr=${FHMIN_WAV}
-  fhinc=${FHOUT_WAV}
-  while (( fhr <= FHMAX_WAV )); do
-    vdate=$(date --utc -d "${current_cycle:0:8} ${current_cycle:8:2} + ${fhr} hours" +%Y%m%d.%H0000)
-    if [[ "${waveMULTIGRID}" == ".true." ]]; then
-      for ww3_grid in ${waveGRD} ; do
-        ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_grd.${ww3_grid}.${vdate}" "${DATA}/${vdate}.out_grd.${ww3_grid}"
-      done
-    else
-      ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_grd.${waveGRD}.${vdate}" "${DATA}/${vdate}.out_grd.ww3"
-    fi
-    if (( FHMAX_HF_WAV > 0 && FHOUT_HF_WAV > 0 && fhr < FHMAX_HF_WAV )); then
-      fhinc=${FHOUT_HF_WAV}
-    fi
-    fhr=$((fhr + fhinc))
-  done
+  #local fhr vdate FHINC ww3_grid
+  #fhr=${FHMIN_WAV}
+  #fhinc=${FHOUT_WAV}
+  #while (( fhr <= FHMAX_WAV )); do
+  #  vdate=$(date --utc -d "${current_cycle:0:8} ${current_cycle:8:2} + ${fhr} hours" +%Y%m%d.%H0000)
+  #  if [[ "${waveMULTIGRID}" == ".true." ]]; then
+  #    for ww3_grid in ${waveGRD} ; do
+  #      ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_grd.${ww3_grid}.${vdate}" "${DATA}/${vdate}.out_grd.${ww3_grid}"
+  #    done
+  #  else
+  #    ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_grd.${waveGRD}.${vdate}" "${DATA}/${vdate}.out_grd.ww3"
+  #  fi
+  #  if (( FHMAX_HF_WAV > 0 && FHOUT_HF_WAV > 0 && fhr < FHMAX_HF_WAV )); then
+  #    fhinc=${FHOUT_HF_WAV}
+  #  fi
+  #  fhr=$((fhr + fhinc))
+  #done
 
   # Loop for point output (uses DTPNT)
-  fhr=${FHMIN_WAV}
-  fhinc=${FHINCP_WAV}
-  while (( fhr <= FHMAX_WAV )); do
-    vdate=$(date --utc -d "${current_cycle:0:8} ${current_cycle:8:2} + ${fhr} hours" +%Y%m%d.%H0000)
-    if [[ "${waveMULTIGRID}" == ".true." ]]; then
-      ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_pnt.${waveuoutpGRD}.${vdate}" "${DATA}/${vdate}.out_pnt.${waveuoutpGRD}"
-    else
-      ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_pnt.${waveuoutpGRD}.${vdate}" "${DATA}/${vdate}.out_pnt.ww3"
-    fi
-    fhr=$((fhr + fhinc))
-  done
+  #fhr=${FHMIN_WAV}
+  #fhinc=${FHINCP_WAV}
+  #while (( fhr <= FHMAX_WAV )); do
+  #  vdate=$(date --utc -d "${current_cycle:0:8} ${current_cycle:8:2} + ${fhr} hours" +%Y%m%d.%H0000)
+  #  if [[ "${waveMULTIGRID}" == ".true." ]]; then
+  #    ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_pnt.${waveuoutpGRD}.${vdate}" "${DATA}/${vdate}.out_pnt.${waveuoutpGRD}"
+  #  else
+  #    ${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_pnt.${waveuoutpGRD}.${vdate}" "${DATA}/${vdate}.out_pnt.ww3"
+  #  fi
+  #  fhr=$((fhr + fhinc))
+  #done
 }
 
 WW3_nml() {
@@ -376,6 +376,34 @@ WW3_nml() {
 WW3_out() {
   echo "SUB ${FUNCNAME[0]}: Copying output data for WW3"
   # TODO: Need to add logic to copy restarts from DATArestart/WW3_RESTART to COM_WAVE_RESTART
+  # Loop for gridded output (uses FHINC)
+  local fhr vdate FHINC ww3_grid
+  local wavprfx="${RUN}wave${WAV_MEMBER:-}"
+  fhr=${FHMIN_WAV}
+  fhinc=${FHOUT_WAV}
+  while (( fhr <= FHMAX_WAV )); do
+    vdate=$(date --utc -d "${current_cycle:0:8} ${current_cycle:8:2} + ${fhr} hours" +%Y%m%d.%H0000)
+    #${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_grd.${waveGRD}.${vdate}" "${DATA}/${vdate}.out_grd.ww3"
+    ${NCP} "${DATA}/${vdate}.out_grd.ww3" "${COM_WAVE_HISTORY}/${wavprfx}.out_grd.${waveGRD}.${vdate}"
+    if (( FHMAX_HF_WAV > 0 && FHOUT_HF_WAV > 0 && fhr < FHMAX_HF_WAV )); then
+      fhinc=${FHOUT_HF_WAV}
+    fi
+    fhr=$((fhr + fhinc))
+  done
+
+  # Loop for point output (uses DTPNT)
+  fhr=${FHMIN_WAV}
+  fhinc=${FHINCP_WAV}
+  while (( fhr <= FHMAX_WAV )); do
+    vdate=$(date --utc -d "${current_cycle:0:8} ${current_cycle:8:2} + ${fhr} hours" +%Y%m%d.%H0000)
+    #${NLN} "${COM_WAVE_HISTORY}/${wavprfx}.out_pnt.${waveuoutpGRD}.${vdate}" "${DATA}/${vdate}.out_pnt.ww3"
+    ${NCP} "${DATA}/${vdate}.out_pnt.ww3" "${COM_WAVE_HISTORY}/${wavprfx}.out_pnt.${waveuoutpGRD}.${vdate}"
+    fhr=$((fhr + fhinc))
+  done
+
+
+
+
 }
 
 
@@ -453,16 +481,15 @@ MOM6_postdet() {
 
       # Native model output uses window midpoint in the filename, but we are mapping that to the end of the period for COM
       source_file="ocn_${vdate_mid:0:4}_${vdate_mid:4:2}_${vdate_mid:6:2}_${vdate_mid:8:2}.nc"
-      dest_file="${RUN}.ocean.t${cyc}z.${interval}hr_avg.f${fhr3temp}.nc"
+      dest_file="${RUN}.ocean.t${cyc}z.${interval}hr_avg.f${fhr3}.nc"
       ${NLN} "${COM_OCEAN_HISTORY}/${dest_file}" "${DATA}/MOM6_OUTPUT/${source_file}"
 
-      fhrtemp=$(($fhr+3))
-      fhr3temp=$(printf %03i "${fhrtemp}")
 
       # Daily output
-      if (( fhrtemp > 0 & fhrtemp % 24 == 0 )); then
+      if (( fhr > 0 & fhr % 24 == 0 )); then
+	vdate=$(date --utc -d "${vdate:0:8} ${vdate:8:2} - 24 hours" +%Y%m%d%H)
         source_file="ocn_daily_${vdate:0:4}_${vdate:4:2}_${vdate:6:2}.nc"
-        dest_file="${RUN}.ocean.t${cyc}z.daily.f${fhr3temp}.nc"
+        dest_file="${RUN}.ocean.t${cyc}z.daily.${vdate:0:4}_${vdate:4:2}_${vdate:6:2}.nc"
         ${NLN} "${COM_OCEAN_HISTORY}/${dest_file}" "${DATA}/MOM6_OUTPUT/${source_file}"
       fi
 

@@ -3,8 +3,8 @@ experiment:
   mode: forecast-only
 
 arguments:
-  idate: 2023012300
-  edate: 2023012300
+  idate: 2020110100
+  edate: 2020110100
   pslot: {{ 'pslot' | getenv }}
   app: S2SW
   resdetatmos: 96

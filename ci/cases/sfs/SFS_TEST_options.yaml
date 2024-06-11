@@ -4,12 +4,12 @@ base:
   DO_JEDIOCNVAR: "NO"
   DO_JEDISNOWDA: "NO"
   DO_MERGENSST: "NO"
-  FHMAX_GFS: 48
+  FHMAX_GFS: 2160
   KEEPDATA: "NO"
   END_OF_IAU_START: "true"
   USE_OCN_PERTURB_FILES: "false"
   USE_ATM_PERTURB_FILES: "true"
   ACCOUNT: "marine-cpu" 
   HPSS_PROJECT: "emc-climate"
-  BASE_CPLIC: /work2/noaa/marine/jmeixner/hercules/SFS/REPLAY_ICs/C96mx100
+  BASE_CPLIC: /work/noaa/marine/nbarton/ICs/REPLAY_ICs/C96mx100 
 

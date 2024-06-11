@@ -194,8 +194,8 @@ case ${step} in
 
     case "${CASE}" in
       "C48" | "C96" | "C192")
-        declare -x "wtime_${step}"="03:00:00"
-        declare -x "wtime_${step}_gfs"="03:00:00"
+        declare -x "wtime_${step}"="08:00:00"
+        declare -x "wtime_${step}_gfs"="08:00:00"
         ;;
       "C384" | "C768" | "C1152")
         declare -x "wtime_${step}"="06:00:00"
@@ -244,7 +244,7 @@ case ${step} in
     ;;
 
   "wavepostsbs")
-    export wtime_wavepostsbs="03:00:00"
+    export wtime_wavepostsbs="08:00:00"
     export npe_wavepostsbs=1
     export nth_wavepostsbs=1
     export npe_node_wavepostsbs=$(( npe_node_max / nth_wavepostsbs ))
@@ -281,7 +281,7 @@ case ${step} in
     ;;
 
   "wavepostpnt")
-    export wtime_wavepostpnt="04:00:00"
+    export wtime_wavepostpnt="08:00:00"
     export npe_wavepostpnt=200
     export nth_wavepostpnt=1
     export npe_node_wavepostpnt=$(( npe_node_max / nth_wavepostpnt ))
