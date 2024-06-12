@@ -36,6 +36,21 @@
 "ocean_model", "MLD_0125",   "MLD_0125",  "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr",  "all",  .true.,  "none",  2
 "ocean_model", "tob",        "tob",       "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr",  "all",  .true.,  "none",  2
 
+#wave_variables
+ "ocean_model", "MSTAR",              "MSTAR",              "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "LA",                 "LA",                 "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "LA_MOD",             "LA_MOD",             "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "MSTAR_LT",           "MSTAR_LT",           "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "ePBL_h_ML",          "ePBL",               "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "ustar",              "ustar",              "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "ePBL_TKE_wind",      "ePBL_TKE_wind",      "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "ePBL_TKE_MKE",       "ePBL_TKE_MKE",       "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "ePBL_TKE_conv",      "ePBL_TKE_conv",      "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "ePBL_TKE_forcing",   "ePBL_TKE_forcing",   "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "ePBL_TKE_mixing",    "ePBL_TKE_mixing",    "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "ePBL_TKE_mech_decay","ePBL_TKE_mech_decay","@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+ "ocean_model", "ePBL_TKE_conv_decay","ePBL_TKE_conv_decay","@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
+
 # Z-Space Fields Provided for CMIP6 (CMOR Names):
 "ocean_model_z", "uo",       "uo",        "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr",  "all",  .true.,  "none",  2
 "ocean_model_z", "vo",       "vo",        "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr",  "all",  .true.,  "none",  2
