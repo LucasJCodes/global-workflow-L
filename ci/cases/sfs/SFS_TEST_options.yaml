@@ -7,7 +7,7 @@ base:
   FHMAX_GFS: 2160
   KEEPDATA: "NO"
   END_OF_IAU_START: "true"
-  USE_OCN_PERTURB_FILES: "false"
+  USE_OCN_PERTURB_FILES: "true"
   USE_ATM_PERTURB_FILES: "true"
   ACCOUNT: "marine-cpu" 
   HPSS_PROJECT: "emc-climate"

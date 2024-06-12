@@ -12,7 +12,7 @@ arguments:
   resdetocean: 1
   start: 'warm'
   gfs_cyc: 1
-  nens: 1
+  nens: 10
   comroot: {{ 'PWD' | getenv }}/{{ 'pslot' | getenv }}/COMROOT
   expdir: {{ 'PWD' | getenv }}/{{ 'pslot' | getenv }}/EXPDIR
   yaml: {{ HOMEgfs }}/ci/cases/sfs/SFS_TEST_options.yaml
