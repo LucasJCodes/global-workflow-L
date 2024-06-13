@@ -41,7 +41,6 @@
  "ocean_model", "LA",                 "LA",                 "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
  "ocean_model", "LA_MOD",             "LA_MOD",             "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
  "ocean_model", "MSTAR_LT",           "MSTAR_LT",           "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
- "ocean_model", "ePBL_h_ML",          "ePBL",               "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
  "ocean_model", "ustar",              "ustar",              "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
  "ocean_model", "ePBL_TKE_wind",      "ePBL_TKE_wind",      "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
  "ocean_model", "ePBL_TKE_MKE",       "ePBL_TKE_MKE",       "@[MOM6_OUTPUT_DIR]/ocn%4yr%2mo%2dy%2hr","all", .true.,  "none", 2
